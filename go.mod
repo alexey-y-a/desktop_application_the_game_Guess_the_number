@@ -1,3 +1,3 @@
-module github.com/alexey-y-a/desktop_application_the_game_Guess_the_number
+module game
 
 go 1.24.3
