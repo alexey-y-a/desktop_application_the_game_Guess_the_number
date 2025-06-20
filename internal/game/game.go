@@ -1,9 +1,8 @@
 package game
 
 import (
-	"math/rand"
+	"math/rand/v2"
 	"strconv"
-	"time"
 )
 
 const (
@@ -18,16 +17,14 @@ type Game struct {
 }
 
 func NewGame() *Game {
-	rand.Seed(time.Now().UnixNano())
 	return &Game{
-		ComputerGuess: rand.Intn(MaxGuess + 1),
+		ComputerGuess: rand.IntN(MaxGuess + 1),
 		GuessesLeft:   MaxGuessesAmount,
 	}
 }
 
 func (g *Game) StartNewGame() {
-	rand.Seed(time.Now().UnixNano())
-	g.ComputerGuess = rand.Intn(MaxGuess + 1)
+	g.ComputerGuess = rand.IntN(MaxGuess + 1)
 	g.GuessesLeft = MaxGuessesAmount
 }
 
@@ -62,4 +59,5 @@ func (g *Game) TryGuess(userGuess int) (string, string, bool) {
 		guessHint = "Ваше число меньше загаданного!"
 	}
 	return guessHint, "Попыток осталось: " + strconv.Itoa(g.GuessesLeft), false
+
 }
